@@ -1,29 +1,27 @@
-import React, {Component} from 'react'
+import React from 'react'
+import BookShelfChanger from './BookShelfChanger'
 import './App.css'
 
-class BookShelf extends Component {
+function BookShelf (props) {
 
-  render() {
+
 
 
     return (
-
+      <div className="bookshelf">
+      <h2 className="bookshelf-title">{props.title}</h2>
       <div className="bookshelf-books">
       <ol className="books-grid">
-        {this.props.books.filter(book => book.shelf === this.props.queryStr).map(curBook => (
+        {props.books.filter(book => book.shelf === props.queryStr).map(curBook => (
           <li key={curBook.id}>
             <div className="book">
               <div className="book-top">
                 <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${curBook.imageLinks.thumbnail})` }}></div>
-                <div className="book-shelf-changer">
-                  <select value={curBook.shelf} onChange={e => this.props.onSelectChange(curBook, e.target.value)}>
-                    <option value="none" disabled>Move to...</option>
-                    <option value="currentlyReading">Currently Reading</option>
-                    <option value="wantToRead">Want to Read</option>
-                    <option value="read">Read</option>
-                    <option value="none">None</option>
-                  </select>
-                </div>
+                <BookShelfChanger
+                  book={curBook}
+                  onSelectChange={props.onSelectChange}
+
+                  />
               </div>
               <div className="book-title">{curBook.title}</div>
               <div className="book-authors">{curBook.authors.join(', ')}</div>
@@ -35,7 +33,8 @@ class BookShelf extends Component {
 
       </ol>
       </div>
+    </div>
     )
-  }
+
 }
 export default BookShelf

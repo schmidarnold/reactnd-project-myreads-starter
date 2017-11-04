@@ -63,29 +63,29 @@ class BooksApp extends Component {
             </div>
             <div className="list-books-content">
               <div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Currently Reading</h2>
+
 
                       <BookShelf
                         books={this.state.books}
                         queryStr={QUERY.READING}
-                        onSelectChange={this.updateShelf} />
+                        onSelectChange={this.updateShelf}
+                        title="Currently Reading" />
 
-                </div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Want to Read</h2>
+
+
                     <BookShelf
                       books={this.state.books}
                       queryStr={QUERY.WANTTOREAD}
-                      onSelectChange={this.updateShelf} />
-                </div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Read</h2>
+                      onSelectChange={this.updateShelf}
+                      title="Want to Read"/>
+
+
                     <BookShelf
                       books={this.state.books}
                       queryStr={QUERY.READ}
-                      onSelectChange={this.updateShelf} />
-                </div>
+                      onSelectChange={this.updateShelf}
+                      title="Read"/>
+              
               </div>
             </div>
             <div className="open-search">
